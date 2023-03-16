@@ -1,4 +1,6 @@
 :root{
+    --primary-font: 'Roboto', sans-serf;
+    --secondary-font: 'Raleway', sans-serf;
     --primary-brand:#4D5AE5;
     --pressed-state:#404BBF;
     --dark: #2E2F42;
@@ -15,12 +17,13 @@ html {
     box-sizing: border-box;
 }
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--primary-font);
     color: var(--text);
     background: var(--white-background);
 }
 h1, h2, h3, p {
     margin-top: 0;
+    margin-bottom: 0;
 }
 img {
     display: block;
@@ -28,6 +31,7 @@ img {
 .list {
     list-style: none;
     margin-top: 0;
+    margin-bottom: 0;
     padding-left: 0;
 }
 
@@ -36,8 +40,22 @@ img {
 }
 /*=========================Components=========================*/
 
+.container, .header-container {
+    width: 1158px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    display: flex;
+}
+.container {
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
 .logo-link {
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--secondary-font);
     font-weight: 800;
     font-size: 18px;
     line-height: 1.17;
@@ -72,51 +90,110 @@ img {
     letter-spacing: 0.02em;
     color: var(--text);
 }
+.visually-hidden {
+    position: absolute;
+    top: -150%;
+    z-index: -100;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    user-select: none;
+    pointer-events: none;
+    cursor: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    white-space: nowrap;
+}
 
 /*=========================/Components========================*/
 
 /*===========================Header===========================*/
 
+.header-container {
+    justify-content: space-between;
+}
+.nav-container {
+    display: flex;
+}
+.nav-menu{
+    display: flex;
+    margin-left: 76px;
+    gap: 40px;
+}
 header a {
+    display: block;
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+.header-link {
     line-height: 1.5;
     letter-spacing: 0.02em;
 }
-.menu a {
+.nav-menu .header-link {
     font-weight: 500;
     color: var(--dark);
 }
-.contacts a {
+.contacts .header-link {
     color: var(--adr-color);
 }
-header a:not(.logo-link):hover,
-header a:not(.logo-link):focus {
+.header-link:hover,
+.header-link:focus {
     color: var(--pressed-state);
 }
+/* .nav-menu-item:not(:last-child) {
+    margin-right: 40px;
+} */
 .contacts {
     font-style: normal;
 }
+.contacts-items {
+    display: flex;
+    gap: 40px;
+}
+/* .contacts-item:not(:last-child) {
+    margin-right: 40px;
+} */
+
 /*===========================/Header===========================*/
 
 /*============================Hero=============================*/
 
 .hero {
     background-color: var(--dark);
+    text-align: center;
+}
+.hero-wrapper {
+    width: 496px;
+    padding-top: 188px;
+    padding-bottom: 188px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .hero-title {
     font-size: 56px;
     line-height: 1.07;
-    text-align: center;
     letter-spacing: 0.02em;
     color: var(--white-background);
 }
 .order-btn {
+    margin-top: 48px;
+    padding: 16px 32px;
+
     font-weight: 500;
     /* font-size: 16px; */
     line-height: 1.5;
     align-items: center;
     letter-spacing: 0.04em;
+
     background: var(--primary-brand);
     color: var(--white-background);
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
     cursor: pointer;
 }
 .order-btn:hover,
@@ -125,13 +202,62 @@ header a:not(.logo-link):focus {
 }
 /*===========================/Hero===========================*/
 
+/* =======================Our Advantages======================= */
+
+.features {
+    display: flex;
+    gap: 24px;
+}
+.features .descr {
+    flex-basis: calc((100% - 72px)/4);
+}
+.features .subtitle {
+    margin-bottom: 8px;
+}
+
+/* ======================/Our Advantages======================= */
+
+/* =======================Our products======================== */
+
+.products-container {
+    padding-top: 72;
+}
+.products-list,
+.team-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+.product-list li {
+    flex-basis: calc((100% - 48px)/3);
+}
+/* ======================/Our products======================== */
+
 /*=========================Our Team==========================*/
 
 .team {
     background: var(--light);
 }
+.team-container {
+    flex-direction: column;
+}
+.team-list {
+    margin-top: 72px;
+}
 .team li {
+    flex-basis: calc((100% - 72px)/4);
+    width: 264px;
     background: var(--white-background);
+    box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+    border-radius: 0px 0px 4px 4px;
+}
+.team-descr {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    text-align: center;
+}
+.team-descr .subtitle {
+    margin-bottom: 8px;
 }
 /*===========================/Our Team===========================*/
 
@@ -139,15 +265,38 @@ header a:not(.logo-link):focus {
 
 .footer {
     background-color: var(--dark);
+    
+}
+.footer .container {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.footer-wrapper {
+    width: 264px;
 }
 .footer .descr {
-    
+    margin-top: 16px;
     color: var(--light);
 }
 /*===========================/Footer===========================*/
 
 /*===========================Portfolio===========================*/
 
+.portfolio-container {
+    padding-top: 96px;
+    flex-direction: column;
+}
+.filter-menu {
+    margin-bottom: 72px;
+    display: flex;
+    justify-content: center;
+    gap:24px;
+}
+.portfolio-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
 .portfolio-menu-btn {
     font-weight: 500;
     font-size: 16px;
@@ -166,7 +315,18 @@ header a:not(.logo-link):focus {
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 .portfolio-list-item {
-    border: 1px solid var(--accent)
+    flex-basis: calc((100% - 48px)/3);
+}
+.portfolio-card {
+    border: 1px solid var(--accent);
+    border-top: none;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    padding-left: 16px;
+
+}
+.portfolio-card .subtitle {
+    margin-bottom: 8px;
 }
 
 /*===========================Portfolio===========================*/
