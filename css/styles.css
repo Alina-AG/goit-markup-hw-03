@@ -27,6 +27,7 @@ h1, h2, h3, p {
 }
 img {
     display: block;
+    max-width: 100%;
 }
 .list {
     list-style: none;
@@ -204,11 +205,9 @@ img {
 
 .features-list,
 .products-list,
-.team-list,
-.portfolio-list {
+.team-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
     gap: 24px;
 }
 .features-item {
@@ -290,6 +289,11 @@ img {
     justify-content: center;
     gap:24px;
 }
+.portfolio-list {
+    display: flex;
+        flex-wrap: wrap;
+        gap: 48px 24px;
+}
 .portfolio-menu-btn {
     font-weight: 500;
     font-size: 16px;
@@ -307,6 +311,7 @@ img {
 .portfolio-menu-btn:focus {
     color: var(--white-background);
     background: var(--pressed-state);
+    border-color: var(--primary-brand);
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 .portfolio-list-item {
